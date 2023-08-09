@@ -1,2 +1,3 @@
-# basic-panda-php-yii2
-Basic Panda PHP-Yii2
+# Simple Yii2 + SimpUtils foundation/template for quick apps building 
+
+
