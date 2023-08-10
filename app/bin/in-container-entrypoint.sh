@@ -23,5 +23,7 @@ fi;
 
 printf "## Start App Container\n";
 
+chmod -Rvf a+rw /app/web/assets /app/runtime;
+
 supervisord -c "/etc/supervisor/supervisord.conf";
 
