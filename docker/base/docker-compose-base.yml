@@ -1,0 +1,25 @@
+services:
+  app:
+    env_file:
+      - in-container.env
+    build:
+      context: ../../
+      dockerfile: docker/base/Dockerfile
+    ports:
+      - "${HTTP_PORT:-8080}:80"
+    depends_on:
+      - db
+    networks:
+      - default
+      - db-internal
+
+  db:
+    env_file:
+      - in-container.env
+    image: postgres
+    networks:
+      - db-internal
+
+
+networks:
+  db-internal: {}

@@ -1,0 +1,14 @@
+services:
+  app:
+    container_name: "my-docker-app"
+    volumes:
+      - "../../app:/app"
+    env_file:
+      - ../base/in-container.env
+      - in-container.env
+
+  db:
+    container_name: "my-docker-db"
+    env_file:
+      - ../base/in-container.env
+      - in-container.env
