@@ -26,3 +26,15 @@ To stop (down/remove) run this command:
 ```shell
 docker compose -f docker/dev/docker-compose.yml -f docker/base/docker-compose-base.yml down
 ```
+
+## What is available out of the box
+
+1. Basic Yii2 template with partially adjusted config
+   * Some `ActiveRecord`s already include SimpUtils traits 
+2. Database of postgres `type` is set up
+3. Sessions and cache already set to use `redis`
+4. Dockerfile contains 2 stages: `dev` and `prod`
+   * `prod` copies content of the code-base
+   * `dev` does not copy the full content of the code base, because it is being attached during docker-compose deploy
+5. 
+

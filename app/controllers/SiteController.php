@@ -9,6 +9,7 @@ use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\Response;
+use function spaf\simputils\basic\pd;
 
 class SiteController extends WebControllerLayer {
     /**
@@ -57,6 +58,7 @@ class SiteController extends WebControllerLayer {
      * @return string
      */
     public function actionIndex() {
+//		pd(Yii::$app->session->isActive);
         return $this->render('index');
     }
 

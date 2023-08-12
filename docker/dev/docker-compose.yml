@@ -12,3 +12,9 @@ services:
     env_file:
       - ../base/in-container.env
       - in-container.env
+
+  redis:
+    container_name: "my-docker-redis"
+    env_file:
+      - ../base/in-container.env
+      - in-container.env

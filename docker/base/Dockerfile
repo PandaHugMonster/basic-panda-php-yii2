@@ -35,6 +35,6 @@ RUN install-php-extensions \
 
 COPY app/composer.* /app/
 COPY app/bin /app/
-COPY docker/base/confs/php-fpm-app.conf /usr/local/etc/php-fpm.d/php-fpm-app.conf
+#COPY docker/base/confs/php-fpm-app.conf /usr/local/etc/php-fpm.d/php-fpm-app.conf
 
 CMD ["/app/bin/in-container-entrypoint.sh", "dev"]

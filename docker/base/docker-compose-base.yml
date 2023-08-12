@@ -8,12 +8,15 @@ services:
     ports:
       - "${HTTP_PORT:-8080}:80"
     volumes:
-      - "../base/confs/php-fpm-app.conf:/usr/local/etc/php-fpm.d/php-fpm-app.conf:read"
+      - "../base/confs/php-fpm-app.conf:/usr/local/etc/php-fpm.d/php-fpm-app.conf:ro"
+      - "../base/confs/php-app.ini:/usr/local/etc/php/conf.d/php-app:ro"
     depends_on:
       - db
+      - redis
     networks:
       - default
       - db-internal
+      - db-redis
 
   db:
     env_file:
@@ -22,6 +25,14 @@ services:
     networks:
       - db-internal
 
+  redis:
+    env_file:
+      - in-container.env
+    image: redis
+    networks:
+      - db-redis
+
 
 networks:
   db-internal: {}
+  db-redis: {}
