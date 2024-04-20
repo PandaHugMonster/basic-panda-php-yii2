@@ -1,5 +1,7 @@
 # Simple Yii2 + SimpUtils foundation/template for quick apps building 
 
+Version: 1.0.0
+
 ## Intro
 This is a simple Staged Docker/Docker-Compose + PHP/Yii2 + PHP/SimpUtils template.
 
