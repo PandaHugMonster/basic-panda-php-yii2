@@ -1,0 +1,7 @@
+include:
+  - path:
+    - docker/base/docker-compose-base.yml
+    - docker/dev/docker-compose.yml
+    - docker/demo/docker-compose.yml
+    - docker/prod/docker-compose.yml
+#    - docker/base/docker-compose-base.yml

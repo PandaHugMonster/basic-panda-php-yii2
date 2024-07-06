@@ -1,37 +1,37 @@
 services:
-  dev-app:
+  demo-app:
     extends:
       file: ../base/docker-compose-base.yml
       service: base-app
     build:
-      target: "dev"
-    container_name: "my-docker-app-dev"
+      target: "demo"
+    container_name: "my-docker-app-demo"
     volumes:
       - "../../app:/app"
     env_file:
-      - ../dev/in-container-app.env
+      - ../demo/in-container-app.env
     profiles:
-      - dev
+      - demo
     depends_on:
-      - dev-db
-      - dev-valkey
+      - demo-db
+      - demo-valkey
 
-  dev-db:
+  demo-db:
     extends:
       file: ../base/docker-compose-base.yml
       service: base-db
-    container_name: "my-docker-db-dev"
+    container_name: "my-docker-db-demo"
     env_file:
-      - ../dev/in-container-db.env
+      - ../demo/in-container-db.env
     profiles:
-      - dev
+      - demo
 
-  dev-valkey:
+  demo-valkey:
     extends:
       file: ../base/docker-compose-base.yml
       service: base-valkey
-    container_name: "my-docker-valkey-dev"
+    container_name: "my-docker-valkey-demo"
     env_file:
-      - ../dev/in-container-valkey.env
+      - ../demo/in-container-valkey.env
     profiles:
-      - dev
+      - demo

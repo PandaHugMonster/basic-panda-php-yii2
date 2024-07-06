@@ -1,37 +1,37 @@
 services:
-  dev-app:
+  prod-app:
     extends:
       file: ../base/docker-compose-base.yml
       service: base-app
     build:
-      target: "dev"
-    container_name: "my-docker-app-dev"
+      target: "prod"
+    container_name: "my-docker-app-prod"
     volumes:
       - "../../app:/app"
     env_file:
-      - ../dev/in-container-app.env
+      - ../prod/in-container-app.env
     profiles:
-      - dev
+      - prod
     depends_on:
-      - dev-db
-      - dev-valkey
+      - prod-db
+      - prod-valkey
 
-  dev-db:
+  prod-db:
     extends:
       file: ../base/docker-compose-base.yml
       service: base-db
-    container_name: "my-docker-db-dev"
+    container_name: "my-docker-db-prod"
     env_file:
-      - ../dev/in-container-db.env
+      - ../prod/in-container-db.env
     profiles:
-      - dev
+      - prod
 
-  dev-valkey:
+  prod-valkey:
     extends:
       file: ../base/docker-compose-base.yml
       service: base-valkey
-    container_name: "my-docker-valkey-dev"
+    container_name: "my-docker-valkey-prod"
     env_file:
-      - ../dev/in-container-valkey.env
+      - ../prod/in-container-valkey.env
     profiles:
-      - dev
+      - prod

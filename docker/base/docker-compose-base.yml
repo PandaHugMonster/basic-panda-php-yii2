@@ -1,25 +1,45 @@
 services:
-  app:
+  base-app:
     env_file:
-      - in-container.env
+      - in-container-app.env
     build:
       context: ../../
-      dockerfile: docker/base/Dockerfile
+      dockerfile: docker/Dockerfile
     ports:
       - "${HTTP_PORT:-8080}:80"
-    depends_on:
-      - db
+    volumes:
+      - "../base/confs/php-fpm-app.conf:/usr/local/etc/php-fpm.d/php-fpm-app.conf:ro"
+      - "../base/confs/php-app.ini:/usr/local/etc/php/conf.d/php-app:ro"
     networks:
       - default
       - db-internal
+      - db-valkey
+    profiles:
+      - base
 
-  db:
+  base-db:
     env_file:
-      - in-container.env
+      - in-container-db.env
     image: postgres
     networks:
-      - db-internal
+      db-internal:
+        aliases:
+          - db
+    profiles:
+      - base
+
+  base-valkey:
+    env_file:
+      - in-container-valkey.env
+    image: valkey/valkey:7.2.5
+    networks:
+      db-valkey:
+        aliases:
+          - valkey
+    profiles:
+      - base
 
 
 networks:
   db-internal: {}
+  db-valkey: {}

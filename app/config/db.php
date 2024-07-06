@@ -1,10 +1,12 @@
 <?php
 
+use function spaf\simputils\basic\env;
+
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=localhost;dbname=yii2basic',
-    'username' => 'root',
-    'password' => '',
+    'dsn' => 'pgsql:host=db;dbname=app',
+    'username' => env("DB_USER"),
+    'password' => env("DB_PASSWORD"),
     'charset' => 'utf8',
 
     // Schema cache options (for production environment)
