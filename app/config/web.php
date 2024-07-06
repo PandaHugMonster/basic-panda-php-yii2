@@ -43,7 +43,7 @@ $config = [
         ],
 	    'redis' => [
 			'class' => 'yii\redis\Connection',
-		    'hostname' => 'redis',
+		    'hostname' => 'valkey',
 		    'port' => '6379',
 		    'database' => 0,
 	    ],
