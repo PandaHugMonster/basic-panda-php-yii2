@@ -14,6 +14,13 @@ RUN install-php-extensions \
     	$PHP_IMAGE_LIB \
         redis
 
+RUN php -r "copy('https://getcomposer.org/installer', '/tmp/composer-setup.php');";
+RUN php -r "if (hash_file('sha384', '/tmp/composer-setup.php') === 'e21205b207c3ff031906575712edab6f13eb0b361f2085f1f1237b7126d785e826a450292b6cfd1d64d92e6563bbde02') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;";
+RUN php /tmp/composer-setup.php;
+RUN php -r "unlink('/tmp/composer-setup.php');";
+
+RUN mv composer.phar /bin/composer;
+
 CMD ["/app/bin/in-container-entrypoint.sh"]
 
 
