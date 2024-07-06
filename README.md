@@ -1,9 +1,12 @@
-# Simple Yii2 + SimpUtils foundation/template for quick apps building 
+# Basic Panda PHP/Yii2 Docker template
 
-Version: 2.0.0
+
+Version: **2.0.0**
+
 
 ## Intro
-This is a simple Staged Docker/Docker-Compose + PHP/Yii2 + PHP/SimpUtils template.
+This is a simple configurable, hierarchical, extendable, staged, dockerized template for PHP/Yii2/SimpUtils projects.
+
 
 Despite it contains PHP/Yii2/SimpUtils, you can empty the `app` folder completely, and
 place your app there (Just make sure the correct Docker Images are used in this case, and not
@@ -103,13 +106,14 @@ The structure of this template suppose to represent "Inheriting and Hierarchical
    * Some `ActiveRecord`s already include SimpUtils traits https://github.com/PandaHugMonster/php-simputils
 2. Database of postgres `type` is set up
    * Make sure you change `password` and `user` values at least for `prod`
-   * > [!IMPORTANT]
-     > For `demo` and especially `prod` do not use Env Vars for passwords and secrets.
-     > You can use `docker secret` https://docs.docker.com/engine/swarm/secrets/
 3. Sessions and cache already set to use `valkey` 
    (open-source and compatible solution instead of "redis") https://valkey.io/
 4. Dockerfile contains 2 stages: `dev` and `prod`
    * `prod` copies content of the code-base
    * `demo` copies content of the code-base
    * `dev` does not copy the full content of the code base, because it is being attached during docker-compose deploy
-5. 
+
+> [!IMPORTANT]
+> For `demo` and especially `prod` you should never use Env Vars for passwords and secrets.
+> You can use `docker secret` https://docs.docker.com/engine/swarm/secrets/
+
